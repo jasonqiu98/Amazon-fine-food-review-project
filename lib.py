@@ -17,8 +17,8 @@ usefulness_labels = ["useful", "useless"]
 
 class Review(object):
     def __init__(self, review_content, sentiment, usefulness):
-        self.token_list = word_tokenize(review_content)
-        self.token_list = [t.lower() for t in self.token_list]  # lowercase
+        self.content = review_content
+        self.token_list = word_tokenize(self.content)
         self.token_set = set(self.token_list)
         self._bigram_list = [(self.token_list[idx], self.token_list[idx+1])
                              for idx in range(len(self.token_list) - 1)]
